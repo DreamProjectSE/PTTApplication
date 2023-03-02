@@ -2,9 +2,15 @@ package datamodels;
 
 public class Staff {
 
-	private int id;
-	private String name;
-	private int departmentID;
+	protected int id;
+	protected String name;
+	protected int departmentID;
+	
+	public Staff(int id,String name) {
+		this.id=id;
+		this.name=name;
+		this.departmentID=departmentID;
+	}
 	
 	public Staff(int id,String name,int departmentID) {
 		this.id=id;
