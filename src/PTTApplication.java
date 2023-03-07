@@ -1,4 +1,5 @@
 import datamodels.Administrator;
+import datamodels.CourseRequirement;
 import datamodels.Skill;
 import datamodels.Training;
 import utils.DummyData;
@@ -34,6 +35,9 @@ public class PTTApplication {
 		admin1.setTeachers(DummyData.teachers);
 		admin1.setTermTrainings(DummyData.trainingList);
 		admin1.analyzeTerm(termID);
+
+		//printing a toString of all course requirements (Test)
+		System.out.println(CourseRequirement.courseReqReader("PTTApplication/src/datamodels/CourseReq.csv"));
 		
 	}
 }
