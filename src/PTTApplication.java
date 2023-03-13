@@ -4,6 +4,9 @@ import datamodels.Skill;
 import datamodels.Training;
 import utils.DummyData;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PTTApplication {
 
 	public static void main (String args[])
@@ -37,7 +40,10 @@ public class PTTApplication {
 		admin1.analyzeTerm(termID);
 
 		//printing a toString of all course requirements (Test)
-		System.out.println(CourseRequirement.courseReqReader("PTTApplication/src/datamodels/CourseReq.csv"));
-		
+		List<CourseRequirement> courseRequirements = CourseRequirement.requirements("PTTApplication/src/datamodels/CourseReq.csv");
+		System.out.println(courseRequirements);
+
+
+
 	}
 }

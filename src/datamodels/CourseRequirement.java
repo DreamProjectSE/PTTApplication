@@ -1,8 +1,7 @@
 package datamodels;
 
-import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +17,14 @@ public class CourseRequirement {
     private String name;
     private int departmentID;
     private int numTeachers;
+    private ArrayList<Integer> requiredSkills;
 
     public CourseRequirement(int ID, String name, int departmentID, int numTeachers) {
         this.ID = ID;
         this.name = name;
         this.departmentID = departmentID;
         this.numTeachers = numTeachers;
+        this.requiredSkills = new ArrayList<>();
     }
 
     public void setID(int ID){
@@ -50,39 +51,47 @@ public class CourseRequirement {
     public int getTeachers(){
         return numTeachers;
     }
+    public ArrayList<Integer> getRequiredSkills() {return requiredSkills;}
+    public void setRequiredSkills(ArrayList<Integer> requiredSkills) {this.requiredSkills = requiredSkills;}
 
 
-    // takes in a filename and then reads from the file and created course requirement objects , assigning
-    // each a unique id and adds them to an arraylist before returning the list
-    public static List<CourseRequirement> courseReqReader(String filename) {
+    // This method calls the filereader method in CVSReader and creates courserequirement objects from the supplied
+    // file. This is called in main and given the file to read from
+
+    public static List<CourseRequirement> requirements(String filename){
         List<CourseRequirement> courseRequirements = new ArrayList<>();
-        int ID=1;
+        List<String[]> file = CVSReader.wholeFile(filename);
+        int ID =1;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String line;
-
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                String name = parts[0].trim();
-                int departmentID = Integer.parseInt(parts[1].trim());
-                int numTeachers = Integer.parseInt(parts[2].trim());
-
-                CourseRequirement courseRequirement = new CourseRequirement(ID, name, departmentID, numTeachers);
-                courseRequirements.add(courseRequirement);
-                ID++;
+        for (String[] data: file) {
+            String name = data[0];
+            int departmentId = Integer.parseInt(data[1]);
+            int numTeachers = Integer.parseInt(data[2]);
+            ArrayList <Integer> requiredSkills = new ArrayList<>();
+            for (int i = 3; i < data.length; i++) {
+                requiredSkills.add(Integer.parseInt(data[i]));
             }
-
-        } catch (IOException e) {
-            System.err.format("Error: ", e);
+            CourseRequirement courseRequirement = new CourseRequirement(ID,name, departmentId,numTeachers);
+            courseRequirement.setRequiredSkills(requiredSkills);
+            courseRequirements.add(courseRequirement);
+            ID++;
         }
-
         return courseRequirements;
+    }
+
+   private String printSkills(ArrayList<Integer> skills){
+        String allSkills = "";
+        for (Integer i:skills) {
+            allSkills = allSkills +  " | " + i;
+        }
+        return allSkills + " |";
     }
 
     // ToString to test the object creations
     @Override
     public String toString() {
-        return "Requirements ID: " + ID + "\n" + "The " + name + " course currently requires " + numTeachers + " teachers.\n";
+        return "Requirements ID " + ID + ": " + "The " + name + " course currently requires " + numTeachers +
+                " teachers with the following skills:" + printSkills(getRequiredSkills())+"\n";
     }
 
 }

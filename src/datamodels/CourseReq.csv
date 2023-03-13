@@ -1,11 +1,11 @@
-music, 8, 4
-physical education, 11, 1
-maths, 2, 6
-science, 3, 4
-creative writing, 10, 2
-drama, 5, 2
-philosophy, 6, 3
-art, 7, 1
-geography, 4, 2
-english, 1, 5
-computer science, 9, 5
+music,8,4,2,3,4
+physical education,11,1,1,5
+maths,2,6,6,4,3
+science,3,4,6,5,7,8
+creative writing,10,2,3,2
+drama,5,2,8
+philosophy,6,3,8,5,6
+art,7,1,4,3
+geography,4,2,4,3,5
+english,1,5,6,5,4,7
+computer science,9,5,2,1,3,4
