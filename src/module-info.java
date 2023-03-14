@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author monae
- *
- */
-module SETeamProject {
-}
