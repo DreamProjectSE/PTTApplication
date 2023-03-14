@@ -32,7 +32,7 @@ private String sub;
 		// this.teacherSkill=teacherSkill;
 	}
 	
-	public String toString() {
+	public String toString2() {
 		return "id: "+id+", name: "+name;
 	}
 
@@ -57,7 +57,45 @@ private String sub;
 	public static List<Teacher> teachers(String filename){
 		List<Teacher> teachersList = new ArrayList<>();
 		List<String[]> file = CVSReader.wholeFile(filename);
-		int id = 1;
+		// //why is this ID here?
+		// int id = 1;
+	
+	//Goes through the csv row by row (item)
+	//first thing in item is the name, then id, then subject
+	//Anything remaining on or after item[3] is a skill
+	//numbered skills on or after item[3] will be added to the skills arrayList
+	//Need to do it this way because there is a variable number of skills per teacher
+
+	for(String[] item:file){
+		String name = item[0];
+		int id = Integer.parseInt(item[1]);
+		String subject = item[2];
+		ArrayList <Integer> skills = new ArrayList<>();
+		for (int i = 3; i< item.length; i++){
+			skills.add(Integer.parseInt(item[i]));
+		}
+
+		//Need to try to figure out what's going on here- starts at line 74 on CourseReq
+		Teacher teacher = new Teacher(id, name, subject);
+		teacher.setTeacherSkills(skills);
+		teachersList.add(teacher);
 	}
+	return teachersList;
+}
+
+private String printSkills(ArrayList<Integer> s){
+	String allSkills = "";
+	for (Integer i:s){
+		allSkills = allSkills + " | " + i;
+	}
+	return allSkills + " | ";
+}
+
+// ToString to print Teacher objects 
+@Override
+public String toString() {
+	return "Teacher ID " + id + ": " + ", Name: " + name + " teaches " + sub +
+			" and has the following skills:" + printSkills(getSkills())+"\n";
+}
 
 }
