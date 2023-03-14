@@ -1,6 +1,7 @@
 import datamodels.Administrator;
 import datamodels.CourseRequirement;
 import datamodels.Skill;
+import datamodels.Teacher;
 import datamodels.Training;
 import utils.DummyData;
 
@@ -49,6 +50,11 @@ public class PTTApplication {
 		List<CourseRequirement> courseRequirements = CourseRequirement.requirements(path);
 		System.out.println(courseRequirements);
 
+		String path2 = new File("src/datamodels/Teacher.csv").getAbsolutePath();
+		System.out.println(path2);
+		//printing a toString of all Teachr requirements (Test)
+		List<Teacher> teachers = Teacher.teachers(path2);
+		System.out.println(teachers);
 
 
 	}
