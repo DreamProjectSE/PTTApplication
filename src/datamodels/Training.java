@@ -121,10 +121,10 @@ public class Training {
 		String text="\n\tEnrolled list: ";
 		for(Teacher teacher:enrollments)
 		{
-			text=text+"\n\t "+teacher;
+			text=text+"\n\t "+teacher.getName();
 		}
 		
-		text="id: "+id+", name: "+name+", totalSpots: "+totalSpots+", isOpen: "+isOpen+" ,"+skill+text;
+		text="\n\nID: "+id+", Name: "+name+" , Skill: "+skill.getSkillName()+", totalSpots: "+totalSpots+", isOpen: "+(isOpen==false?isOpen:"["+isOpen+"]")+text;
 		
 		
 		return text;

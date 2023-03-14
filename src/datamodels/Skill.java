@@ -49,7 +49,7 @@ public class Skill {
 	
 
 	public String toString() {
-		return "id: "+id+", name: "+name;
+		return "\nid: "+id+", name: "+name;
 	}
 
 }
