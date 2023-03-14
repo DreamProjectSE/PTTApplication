@@ -12,7 +12,7 @@ public class Administrator extends Staff{
 	
 
 	
-	public void analyzeTerm(ArrayList<CourseRequirement> courseRequirements, ArrayList<Teacher> teachers, ArrayList<Training> trainings) 
+	public void analyzeTerm(int courseID, ArrayList<CourseRequirement> courseRequirements, ArrayList<Teacher> teachers, ArrayList<Training> trainings) 
 	{
 
 		// View Course Requirements

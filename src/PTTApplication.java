@@ -8,6 +8,7 @@ import utils.CVSReader;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class PTTApplication {
 
@@ -49,12 +50,20 @@ public class PTTApplication {
 		ArrayList<Training> trainings = CVSReader.populateTrainings(path,skills,teachers);
 		System.out.println(trainings);
 		
-				
+		
 		
 		// Admin from departmentID=4 with id 193
 		Administrator admin1=new Administrator(193, "Tom", 4);
+		
 		System.out.println("\n---------------- Analyzing the term requirements ------------------");
-		admin1.analyzeTerm(courseRequirements,teachers,trainings);
+		
+		Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object
+		
+	    System.out.println("Enter the course ID to start analyzing requirements...\n");
+	    
+	    int courseID=inputScanner.nextInt();
+		
+		admin1.analyzeTerm(courseID,courseRequirements,teachers,trainings);
 		
 		//System.out.println("\n********************************** UPDATED COURSE REQUIREMENTS **********************************************");		
 		//System.out.println(trainings);
