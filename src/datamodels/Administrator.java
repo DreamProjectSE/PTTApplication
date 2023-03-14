@@ -3,45 +3,17 @@ package datamodels;
 import java.util.ArrayList;
 
 public class Administrator extends Staff{
-	
-	private int termID;
-	
-	private ArrayList<Training> termTraining;
-	private ArrayList<Teacher> teachers;
 
 
 	public Administrator(int id,String name,int departmentID) {
 		super(id, name, departmentID);
 		
-		termTraining=new ArrayList<>();
 	}
 	
-	public void setTermID(int termID) {
-		this.termID=termID;
-	}
-	
-	public int getTermID() {
-		return termID;
-	}
-	
-	public void setTermTrainings(ArrayList<Training> termTraining) {
-		this.termTraining=termTraining;		
-	}
-	
-	public ArrayList<Training> getTermTrainings() {
-		return termTraining;		
-	}
-	
-	public void setTeachers(ArrayList<Teacher> teachers) {
-		this.teachers=new ArrayList<>();
-		this.teachers=teachers;
-	}
 
-	public ArrayList<Teacher> getTeachers() {
-		return teachers;
-	}
 	
-	public void analyzeTerm(int termID) {
+	public void analyzeTerm(ArrayList<CourseRequirement> courseRequirements, ArrayList<Teacher> teachers, ArrayList<Training> trainings) 
+	{
 
 		// View Course Requirements
 		
@@ -54,7 +26,7 @@ public class Administrator extends Staff{
 		System.out.println("\n Checking available training for skillID - "+skillID);
 
 		// View list of available trainings and their capacity
-		Training availableTraining=getAvailableTrainings(skillID);
+		Training availableTraining=getAvailableTrainings(skillID,trainings);
 		
 		System.out.println("\n AvailableTraining - "+availableTraining);
 
@@ -66,20 +38,22 @@ public class Administrator extends Staff{
 			// **** No trainings available ***
 		}
 		
-	
 	}
 
-	/** Method to retrieve available training for given skill and return the training object,if exists
+	
+
+	/** Method to retrieve available training (isOpen=true) for given skill and return the training object,if exists
 	 * 
 	 * @param skillID
+	 * @param trainings
 	 * @return
 	 */
-	private Training getAvailableTrainings(int skillID) {
+	private Training getAvailableTrainings(int skillID, ArrayList<Training> trainings) {
 		
-	
-		Training availableTraining = null;
+	Training availableTraining = null;
 		
-		for(Training training:termTraining) {
+	// Iterate through training list and find any available training for the given skill
+		for(Training training:trainings) {
 
 			// if the training is for the given skill and the training is still open, return that object
 			if(training.getSkill().getSkillID()==skillID && training.isTrainingOpen()==true) 
@@ -91,7 +65,7 @@ public class Administrator extends Staff{
 
 		return availableTraining;
 	}
-
+	
 	
 	
 	
