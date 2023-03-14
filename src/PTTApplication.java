@@ -4,6 +4,7 @@ import datamodels.Skill;
 import datamodels.Training;
 import utils.DummyData;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,8 +40,13 @@ public class PTTApplication {
 		admin1.setTermTrainings(DummyData.trainingList);
 		admin1.analyzeTerm(termID);
 
+		String basePath = new File("").getAbsolutePath();
+		System.out.println(basePath);
+
+		String path = new File("src/datamodels/CourseReq.csv").getAbsolutePath();
+		System.out.println(path);
 		//printing a toString of all course requirements (Test)
-		List<CourseRequirement> courseRequirements = CourseRequirement.requirements("PTTApplication/src/datamodels/CourseReq.csv");
+		List<CourseRequirement> courseRequirements = CourseRequirement.requirements(path);
 		System.out.println(courseRequirements);
 
 
