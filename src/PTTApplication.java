@@ -23,12 +23,12 @@ public class PTTApplication {
 	
 		// Read file and populate data models
 
-		System.out.println("\n******************************** SKILLS *********************************************");
+		//System.out.println("\n******************************** SKILLS *********************************************");
 
 		// Populate skills list from CSV file
 		String path=new File("src/assets/Skills.csv").getAbsolutePath();		
 		ArrayList<Skill> skills = CSVReader.populateSkills(path);
-		System.out.println(skills);
+		//System.out.println(skills);
 
 		System.out.println("\n******************************** COURSE REQUIREMENTS *********************************************");
 
@@ -38,12 +38,12 @@ public class PTTApplication {
 		System.out.println(courseRequirements);
 		
 		
-		System.out.println("\n********************************** TEACHERS **********************************************");
+		//System.out.println("\n********************************** TEACHERS **********************************************");
 
 		// Populate teachers list from CSV file
 		path = new File("src/assets/Teacher.csv").getAbsolutePath();
 		ArrayList<Teacher> teachers = CSVReader.populateTeachers(path,skills);
-		System.out.println(teachers);
+		//System.out.println(teachers);
 		
 		// Populate training list from CSV file
 		System.out.println("\n********************************** TRAINING **********************************************");
@@ -64,15 +64,14 @@ public class PTTApplication {
 	    
 	    int courseID=inputScanner.nextInt();
 		
-		admin1.analyzeTerm(courseID,courseRequirements,teachers,trainings);
+		boolean updateStatus=admin1.analyzeTerm(courseID,courseRequirements,teachers,trainings);
 		
-		//skills.get(0).setSkillName("test####"); // Updating skill name will reflect changes throughout all arraylists having skill object
 		
 		//System.out.println("\n********************************** UPDATED COURSE REQUIREMENTS **********************************************");		
 		//System.out.println(courseRequirements);
 		
 		//System.out.println("\n********************************** UPDATED TRAINING **********************************************");		
-		//System.out.println(trainings);
+		//System.out.println("\n"+trainings);
 
 		// Write to file
 		
