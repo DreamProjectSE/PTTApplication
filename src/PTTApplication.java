@@ -65,8 +65,10 @@ public class PTTApplication {
 		
 		admin1.analyzeTerm(courseID,courseRequirements,teachers,trainings);
 		
+		//skills.get(0).setSkillName("test####");
+		
 		//System.out.println("\n********************************** UPDATED COURSE REQUIREMENTS **********************************************");		
-		//System.out.println(trainings);
+		//System.out.println(courseRequirements);
 		
 		//System.out.println("\n********************************** UPDATED TRAINING **********************************************");		
 		//System.out.println(trainings);
