@@ -26,12 +26,14 @@ public class Teacher extends Staff {
 	// Attributes
 	private ArrayList<Skill> skills;
 	private String sub;
+	private ArrayList<Skill> teachesSkills;
 	
 	// constructor
 	public Teacher(int id, String name, String sub) {
 		super(id, name);
 		this.sub = sub;
 		this.skills = new ArrayList<>();
+		teachesSkills = new ArrayList<>();
 	}
 
 	// setting subject
@@ -54,6 +56,20 @@ public class Teacher extends Staff {
 		this.skills = teacherSkill;
 	}
 
+	// get skills as a List of Integer values
+	public ArrayList<Skill> getSkillsBeingTaught() {
+		return teachesSkills;
+	}
+	
+	// set a list of skills for the teacher
+	public void setSkillsBeingTaught(Skill s) {
+		teachesSkills.add(s);
+	}
+
+	public void setSkill(Skill s){
+		skills.add(s);
+	}
+
 	
 
 	// print the skills
@@ -68,8 +84,7 @@ public class Teacher extends Staff {
 	// ToString to print Teacher objects
 	@Override
 	public String toString() {
-		return "Teacher ID " + id + ": " + " " + name + " teaches \"" + sub +
+		return "Teacher ID " + id + " with depID " + departmentID + " " + name + " teaches \"" + sub +
 				"\" and has the following skills:" + printSkills(getSkills()) + "\n";
 	}
-
 }

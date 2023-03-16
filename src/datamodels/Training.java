@@ -13,7 +13,7 @@ public class Training {
 	private int id; // unique identifier
 	private String name;
 	private int totalSpots; 
-	private boolean isOpen=true;
+	private boolean isOpen = true;
 	
 	private Skill skill;
 	
@@ -111,9 +111,10 @@ public class Training {
 	 */
 	public void enrolTeacher(Teacher teacher) {
 		this.enrollments.add(teacher);
+		teacher.setSkill(skill);
 		
 		// check the enrolled count and update training status
-		if(enrollments.size()==totalSpots)
+		if(enrollments.size() == totalSpots)
 			setTrainingStatus(false);
 	}
 	
@@ -121,12 +122,10 @@ public class Training {
 		String text="\n\tEnrolled list: ";
 		for(Teacher teacher:enrollments)
 		{
-			text=text+"\n\t "+teacher.getName();
+			text = text+"\n\t "+teacher.getName();
 		}
 		
 		text="\n\nID: "+id+", Name: "+name+" , Skill: "+skill.getSkillName()+", totalSpots: "+totalSpots+", isOpen: "+(isOpen==false?isOpen:"["+isOpen+"]")+text;
-		
-		
 		return text;
 	}
 	

@@ -31,6 +31,8 @@ public class CourseRequirement {
         this.requiredSkills = new ArrayList<>();
     }
 
+    
+
     public void setID(int ID){
         this.ID = ID;
     }
