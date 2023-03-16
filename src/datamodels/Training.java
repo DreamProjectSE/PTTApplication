@@ -128,6 +128,13 @@ public class Training {
 		text="\n\nID: "+id+", Name: "+name+" , Skill: "+skill.getSkillName()+", totalSpots: "+totalSpots+", isOpen: "+(isOpen==false?isOpen:"["+isOpen+"]")+text;
 		return text;
 	}
+
+	public int getStatus() {
+		if(isOpen)
+			return 1;
+		else
+			return 0;
+	}
 	
 	
 
