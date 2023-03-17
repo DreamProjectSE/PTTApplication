@@ -78,7 +78,7 @@ public class Teacher extends Staff {
 	// ToString to print Teacher objects
 	@Override
 	public String toString() {
-		return "Teacher ID " + id + " with depID " + departmentID + " " + name + " teaches \"" + sub +
+		return "Teacher ID " + id + " " + name + " teaches \"" + sub +
 				"\" and has the following skills:" + printSkills(getSkills()) + "\n";
 	}
 }

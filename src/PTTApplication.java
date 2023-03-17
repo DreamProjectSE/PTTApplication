@@ -15,7 +15,7 @@ public class PTTApplication {
 
 	public static void main (String args[])
 	{
-		System.out.println("*** PTT application ****");
+		System.out.println("*** Welcome to PTT Application ****");
 		
 
 		//Assume the term id is 2
@@ -64,9 +64,9 @@ public class PTTApplication {
 		// Printing the updated toString representations of the data models after the administrator has executed the analyzeTerm method
 		System.out.println("\n********************************** UPDATED TRAINING **********************************************");
 		System.out.println(trainings);
-		System.out.println("\n********************************** UPDATED TEACHERS **********************************************");
-		System.out.println(teachers);
+		
 
+		
 		/*
 		 * Testing the writeTrainings and writeTeachers methods with the following steps:
 		 * 
@@ -79,19 +79,15 @@ public class PTTApplication {
 		 * and before the writer tests, then the CSVWriter methods are working as intended.
 		 */
 		
-		System.out.println("\n********************************** writeTrainings TEST **********************************************");
-		path=new File("src/assets/TrainingsTest.csv").getAbsolutePath();
+		path=new File("src/assets/Trainings.csv").getAbsolutePath();
 		CSVWriter.writeTrainings(trainings, path);
 		ArrayList<Training> testTrainings = CSVReader.populateTrainings(path,skills,teachers);
-		System.out.println(testTrainings);
 
 
-		System.out.println("\n********************************** writeTeachers TEST **********************************************");
-		path=new File("src/assets/TeacherTest.csv").getAbsolutePath();
+		path=new File("src/assets/Teacher.csv").getAbsolutePath();
 		CSVWriter.writeTeachers(teachers, path);
 		ArrayList<Teacher> testTeachers = CSVReader.populateTeachers(path,skills);
-		System.out.println(testTeachers);
-	
+		System.out.println("<----------- Updated CSV files! ----------->");
 		
 		
 
