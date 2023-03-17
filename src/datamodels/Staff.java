@@ -22,7 +22,7 @@ public class Staff {
 	public Staff(int id,String name) {
 		this.id=id;
 		this.name=name;
-		this.departmentID=departmentID;
+		// this.departmentID=departmentID;
 	}
 	
 

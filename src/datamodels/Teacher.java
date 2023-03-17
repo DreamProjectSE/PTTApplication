@@ -1,18 +1,12 @@
 package datamodels;
 
 /** Datamodel to accomodate 'Teacher' object
-
  * 
- * @authors Praharsh and Mona
+ * @author Praharsh and Mona
  *
  */
 
-
 import java.util.ArrayList;
-import java.util.List;
-
-import utils.CSVReader;
-
 
 /**Interacts with: Administrator Stores Teacher objects after reading a file as input 
  * Teachers will be matched with Courses based on the Course Requirements and their skills
@@ -46,7 +40,7 @@ public class Teacher extends Staff {
 		return sub;
 	}
 
-	// get skills as a List of Integer values
+	// get skills as a List of skill
 	public ArrayList<Skill> getSkills() {
 		return skills;
 	}
@@ -56,21 +50,21 @@ public class Teacher extends Staff {
 		this.skills = teacherSkill;
 	}
 
-	// get skills as a List of Integer values
+	// get an arraylist of skills
 	public ArrayList<Skill> getSkillsBeingTaught() {
 		return teachesSkills;
 	}
 	
-	// set a list of skills for the teacher
+	// add a skill in the arraylist of the teach skill
 	public void setSkillsBeingTaught(Skill s) {
 		teachesSkills.add(s);
 	}
 
+	//set the skill in the the arraylist of the skills
 	public void setSkill(Skill s){
 		skills.add(s);
 	}
 
-	
 
 	// print the skills
 	private String printSkills(ArrayList<Skill> s) {
