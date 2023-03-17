@@ -18,7 +18,7 @@ public class CSVWriter {
     public CSVWriter() {
     }
 
-		/*
+    /**
 	 * This method takes in an ArrayList of trainings and writes them to a CSV file in the same format as the original Trainings.csv file,
 	 * this is so that the data in the updated file can be used again by the CSVReader methods after the program has been run.
 	 */
@@ -51,7 +51,7 @@ public class CSVWriter {
         }
     }
 
-	/*
+	/**
 	 * This method takes in an ArrayList of teachers and writes them to a CSV file in the same format as the original Teacher.csv file.
 	 */
 	public static void writeTeachers(ArrayList<Teacher> teachers, String fileName) {

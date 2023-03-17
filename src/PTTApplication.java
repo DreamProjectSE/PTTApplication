@@ -8,6 +8,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/** Main method which populates the data models and start the matching process
+ *
+ */
 public class PTTApplication {
 
 	public static void main (String args[])
@@ -20,12 +23,12 @@ public class PTTApplication {
 	
 		// Read file and populate data models
 
-		System.out.println("\n******************************** SKILLS *********************************************");
+		//System.out.println("\n******************************** SKILLS *********************************************");
 
 		// Populate skills list from CSV file
 		String path=new File("src/assets/Skills.csv").getAbsolutePath();		
 		ArrayList<Skill> skills = CSVReader.populateSkills(path);
-		System.out.println(skills);
+		//System.out.println(skills);
 
 		System.out.println("\n******************************** COURSE REQUIREMENTS *********************************************");
 
@@ -54,12 +57,9 @@ public class PTTApplication {
 		System.out.println("\n---------------- Analyzing the term requirements ------------------");
 		
 		Scanner inputScanner = new Scanner(System.in);  // Create a Scanner object
-		
-	    System.out.println("Enter the course ID to start analyzing requirements...\n");
-	    
-	    int courseID=inputScanner.nextInt();
-		
-		admin1.analyzeTerm(courseID,courseRequirements,teachers,trainings);
+
+	    // Call admin method to analyze the course requirements and assign teachers to training
+		admin1.analyzeTerm(courseRequirements,teachers,trainings);
 
 		// Printing the updated toString representations of the data models after the administrator has executed the analyzeTerm method
 		System.out.println("\n********************************** UPDATED TRAINING **********************************************");
@@ -69,13 +69,16 @@ public class PTTApplication {
 
 		/*
 		 * Testing the writeTrainings and writeTeachers methods with the following steps:
+		 * 
 		 * 1. Write the trainings and teachers arraylists to the corresponding CSV files, in this case they are tests but can be changed to update the originals.
 		 * 2. Read the CSV files that were just written to and populate the trainings and teachers arraylists with the new data.
 		 * 3. Print the new toString representations of the datamodels to the console.
+		 * 
 		 * If the output is the same as the toString representations of the updated training and teachers arraylists
 		 * that were printed after the administrator executed the analyseTerm method, 
 		 * and before the writer tests, then the CSVWriter methods are working as intended.
 		 */
+		
 		System.out.println("\n********************************** writeTrainings TEST **********************************************");
 		path=new File("src/assets/TrainingsTest.csv").getAbsolutePath();
 		CSVWriter.writeTrainings(trainings, path);
@@ -89,15 +92,7 @@ public class PTTApplication {
 		ArrayList<Teacher> testTeachers = CSVReader.populateTeachers(path,skills);
 		System.out.println(testTeachers);
 	
-		//skills.get(0).setSkillName("test####"); // Updating skill name will reflect changes throughout all arraylists having skill object
 		
-		//System.out.println("\n********************************** UPDATED COURSE REQUIREMENTS **********************************************");		
-		//System.out.println(courseRequirements);
-		
-		//System.out.println("\n********************************** UPDATED TRAINING **********************************************");		
-		//System.out.println(trainings);
-
-		// Write to file
 		
 
 	}
