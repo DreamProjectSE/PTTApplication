@@ -7,14 +7,26 @@ import datamodels.Training;
 import datamodels.Staff;
 import datamodels.Skill;
 
+/** Class to accomodate Administratot functionality
+ * 
+ * @author Daniel
+ *
+ */
 public class Administrator extends Staff{
 
-
+	// Constructor method
 	public Administrator(int id,String name,int departmentID) {
 		super(id, name, departmentID);
 		
 	}
 
+	/** Method takes a requirement and teachers list
+	 * Checks what all skills are missing for teachers
+	 * Returns the missing skills list
+	 * @param requirement
+	 * @param teachers
+	 * @return
+	 */
 	public ArrayList<Skill> getRequiredTraining(CourseRequirement requirement, ArrayList<Teacher> teachers){
 		int depID = requirement.getID();
 		ArrayList<Skill> skillList = requirement.getRequiredSkills();
@@ -30,7 +42,7 @@ public class Administrator extends Staff{
 			while (count < numOfTeachersRequired){
 				for (Teacher t : teachers){
 					/*
-					 * For each teacher skill, check if its the correct skill
+					 * For each teacher skill, check if its the correct skill.
 					 * if so and teacher not teaching anything then add it
 					 * 
 					 */
@@ -45,6 +57,7 @@ public class Administrator extends Staff{
 							/**
 							 * Teacher is teaching something so need to
 							 * check if they are teaching current skill
+							 * If so, break. Otherwise , assign the skill and break
 							 */
 							else {
 								if (t.getSkillsBeingTaught().contains(s)){
@@ -72,22 +85,37 @@ public class Administrator extends Staff{
 		return requiredTrainings;
 	}
 	
+	/** Method to print course requirements
+	 * 
+	 * @param courseRequirements
+	 */
 	public void printCourseRequirements(CourseRequirement courseRequirements){
-		System.out.println("\n Next Course \n");
+		System.out.println("\n <--------- Next Course ------------>\n");
 
-			System.out.println("Course " + courseRequirements.getName() + " needs " +
-								courseRequirements.getTeachers() + " with the following skills");
+			System.out.println("Course " + courseRequirements.getName() + " needs [" +
+								courseRequirements.getTeachers() + "] teachers with the following skills");
 			for (Skill s : courseRequirements.getRequiredSkills()){
-				System.out.println(s.getSkillName() + " : " + s.getSkillID());
+				System.out.println("ID - "+s.getSkillID()+" : "+s.getSkillName());
 			}
 	}
 
+	/** Method to print skills
+	 * 
+	 * @param requiredTrainings
+	 */
 	public void printRequiredTraining(ArrayList<Skill> requiredTrainings){
 		for (Skill s : requiredTrainings){
 			System.out.println(s.getSkillName());
 		}
 	}
 
+	/** Method checks for the available teachers and returns them
+	 * 
+	 * @param skill
+	 * @param teachers
+	 * @param depID
+	 * @return
+	 */
 	public ArrayList<Teacher> getAvailableTeachers(Skill skill, ArrayList<Teacher> teachers, int depID){
 		ArrayList<Teacher> teachersWithAvaliablity = new ArrayList<Teacher>();
 		for (Teacher t: teachers){
@@ -100,8 +128,14 @@ public class Administrator extends Staff{
 		return teachersWithAvaliablity;
 	}
 
+	/** Method to retrieve requirements for the specified courseId and find available teachers for the given course
+	 * The teachers skill will be analyzed and assign training to them, if they needs training
+	 * @param courseRequirements
+	 * @param teachers
+	 * @param trainings
+	 */
 	
-	public void analyzeTerm(int courseID, ArrayList<CourseRequirement> courseRequirements, ArrayList<Teacher> teachers, ArrayList<Training> trainings) 
+	public void analyzeTerm(ArrayList<CourseRequirement> courseRequirements, ArrayList<Teacher> teachers, ArrayList<Training> trainings) 
 	{
 		Scanner s = new Scanner(System.in);
 
@@ -113,10 +147,10 @@ public class Administrator extends Staff{
 			
 			for (CourseRequirement requirement : courseRequirements){
 				printCourseRequirements(requirement);
-				System.out.println("Do you want to assign teachers to this course? " + requirement.getName());
-				System.out.println("Please enter 'Yes' or 'No'");
+				System.out.println("Do you want to assign teachers to this course? - " + requirement.getName());
+				System.out.println("Please enter 'Yes', 'No' or 'Stop'");
 				String input = s.nextLine();
-				if (input.equals("Yes")){
+				if (input.equalsIgnoreCase("Yes")){
 					/**
 					 * Fetch a list of skills not avaliable in the current teacher skills
 					 */
@@ -150,14 +184,16 @@ public class Administrator extends Staff{
 
 					}
 					if (count == total){
-						System.out.println("Teacher training has been assigned to meet all requirements");
+						System.out.println("Teacher training has been assigned to meet all requirements!");
 					}
 					else {
-						System.out.println("Not enough training capacity to train all teachers");
+						System.out.println("Not enough training capacity to train all teachers!");
 					}
 				}
-				else {
-					System.out.println("The system will skip assigning teachers to this course");
+				else if (input.equalsIgnoreCase("No")){
+					System.out.println("The system will skip assigning teachers to this course!");
+				}else {
+					break;
 				}
 			}	
 	}
