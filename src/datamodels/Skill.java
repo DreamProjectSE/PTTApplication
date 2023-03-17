@@ -1,7 +1,5 @@
 package datamodels;
 
-import java.util.ArrayList;
-
 /** Datamodel to accomodate 'Skill' object
  * 
  * @author Saranya

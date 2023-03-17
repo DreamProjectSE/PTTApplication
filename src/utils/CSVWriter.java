@@ -5,15 +5,10 @@ package utils;
  *@author Ruari
  */
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import datamodels.CourseRequirement;
 import datamodels.Skill;
 import datamodels.Teacher;
 import datamodels.Training;

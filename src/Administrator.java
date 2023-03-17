@@ -1,7 +1,6 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import datamodels.CourseRequirement;
 import datamodels.Teacher;
 import datamodels.Training;
@@ -104,7 +103,6 @@ public class Administrator extends Staff{
 	
 	public void analyzeTerm(int courseID, ArrayList<CourseRequirement> courseRequirements, ArrayList<Teacher> teachers, ArrayList<Training> trainings) 
 	{
-		ArrayList<String> teacherAssignments = new ArrayList<String>();
 		Scanner s = new Scanner(System.in);
 
 

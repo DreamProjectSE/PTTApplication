@@ -4,13 +4,9 @@ import datamodels.Teacher;
 import datamodels.Training;
 import utils.CSVReader;
 import utils.CSVWriter;
-
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-
 
 public class PTTApplication {
 
@@ -20,7 +16,7 @@ public class PTTApplication {
 		
 
 		//Assume the term id is 2
-		int termID=2;
+		// int termID=2;
 	
 		// Read file and populate data models
 

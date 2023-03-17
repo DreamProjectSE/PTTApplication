@@ -1,9 +1,6 @@
 package datamodels;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.List;
 
 /** Interacts with: Administrator
 * stores objects of course requirements after reading a file as input
